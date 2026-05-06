@@ -1,0 +1,19 @@
+{
+  "name": "andrewlngdn",
+  "description": "Andrew Langdon's Claude Code plugins.",
+  "owner": {
+    "name": "Andrew Langdon",
+    "email": "andrewlngdn@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "quorum",
+      "source": "./plugins/quorum",
+      "description": "Claude Code plugin for second opinions from a panel of LLMs via OpenRouter.",
+      "homepage": "https://github.com/AndrewLngdn/claude-code-quorum",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": ["openrouter", "second-opinion", "multi-model", "peer-review"]
+    }
+  ]
+}

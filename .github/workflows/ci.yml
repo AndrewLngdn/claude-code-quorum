@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate marketplace manifest JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('.claude-plugin/marketplace.json','utf8'))"
+
+      - name: Validate plugin manifest JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('plugins/quorum/.claude-plugin/plugin.json','utf8'))"
+
+      - name: Validate MCP config JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('plugins/quorum/.mcp.json','utf8'))"
+
+      - name: Syntax-check MCP server
+        run: node --check plugins/quorum/mcp-server/server.mjs
+
+      - name: Run unit tests
+        run: node test/unit.mjs
+
+      - name: Run smoke test
+        run: node test/smoke.mjs

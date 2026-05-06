@@ -1,0 +1,39 @@
+{
+  "name": "quorum",
+  "version": "0.1.2",
+  "description": "Claude Code plugin for second opinions from a panel of LLMs via OpenRouter.",
+  "author": {
+    "name": "Andrew Langdon",
+    "url": "https://github.com/AndrewLngdn"
+  },
+  "homepage": "https://github.com/AndrewLngdn/claude-code-quorum",
+  "repository": "https://github.com/AndrewLngdn/claude-code-quorum",
+  "license": "MIT",
+  "keywords": [
+    "openrouter",
+    "second-opinion",
+    "multi-model",
+    "peer-review"
+  ],
+  "userConfig": {
+    "openrouter_api_key": {
+      "type": "string",
+      "title": "OpenRouter API Key",
+      "description": "Get one at https://openrouter.ai/keys. Leave blank if you already have OPENROUTER_API_KEY in your environment or a key file at ~/.config/openrouter/key — the server falls back to those.",
+      "sensitive": true,
+      "required": false
+    },
+    "panel_models": {
+      "type": "string",
+      "title": "Panel models",
+      "description": "Comma-separated families or slugs queried in parallel by /quorum:ask. Family names resolve via OpenRouter's ~latest aliases.",
+      "default": "gpt,gemini,mistralai/mistral-large-2512"
+    },
+    "require_no_logging": {
+      "type": "boolean",
+      "title": "Require no-logging providers",
+      "description": "When on, every request asks OpenRouter to only route to inference providers that don't log or train on prompts. On by default. Turn off if you've added a model whose only available provider trains on data.",
+      "default": true
+    }
+  }
+}

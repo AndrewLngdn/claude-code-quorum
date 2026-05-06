@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "quorum": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp-server/server.mjs"],
+      "env": {
+        "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}",
+        "QUORUM_PANEL_MODELS": "${user_config.panel_models}",
+        "QUORUM_REQUIRE_NO_LOGGING": "${user_config.require_no_logging}"
+      }
+    }
+  }
+}
